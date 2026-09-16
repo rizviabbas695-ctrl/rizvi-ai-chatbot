@@ -3,7 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 import os
 
-st.title("Mera AI Chatbot")
+st.title("Rizvi Bot")
 
 os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
 
@@ -19,8 +19,7 @@ for message in st.session_state.chat_history:
         st.chat_message("user").write(message.content)
     elif isinstance(message, AIMessage):
         st.chat_message("assistant").write(message.content)
-
-user_input = st.chat_input("Apna sawaal likho...")
+user_input = st.chat_input("Write your question")
 
 if user_input:
     st.session_state.chat_history.append(HumanMessage(content=user_input))
